@@ -1,0 +1,23 @@
+# Dependencies for the 8GB deployment laptop -- inference/serving only.
+# Does NOT include bitsandbytes (training-only, needs a GPU) or anything
+# else that's only used by the training scripts (01/02/03/05/07/07b).
+#
+# Install torch SEPARATELY first with the CPU-only build (see README/deploy
+# instructions) -- installing plain "torch" here can pull a much larger
+# CUDA build that this CPU-only machine doesn't need:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+# Then install the rest:
+#   pip install -r requirements-deploy.txt
+
+tokenizers>=0.15.0
+flask>=3.0.0
+
+# Required only because 06_prepare_instruct_data.py imports these at the
+# top of the file (for its dataset-downloading functions), even though
+# backend.py/09_inference.py only ever use it for the retrieval example
+# lists (CURATED_EXAMPLES, BUGFIX_EXAMPLES, PROJECT_STRUCTURE_EXAMPLES,
+# PROJECT_FILE_EXAMPLES) and never actually call those download functions.
+# Still needed for the module to import without error.
+datasets>=2.16.0
+tqdm>=4.66.0
