@@ -4,6 +4,12 @@ A small, self-hosted Python coding assistant built around a decoder-only transfo
 
 This is an experimental learning project, **not a general-purpose production coding model**. Generated code can be incomplete or incorrect. For example, the current web-scraper benchmark prompt produces a partial solution even with the full-precision model.
 
+## Live demo
+
+[Open Code Studio](https://om.tail333f0b.ts.net/) — hosted on a laptop via Tailscale Funnel. Availability depends on the laptop being powered on, awake, connected to the internet, and the model server running.
+
+**Public-demo warning:** This deployment does not yet require a login. Visitors can submit prompts and access or clear shared chat history. Do not enter personal information, passwords, API keys, or confidential code. Access control and isolated histories are needed before sharing it broadly.
+
 ## Architecture
 
 - `gpt_model.py`: transformer architecture (10 layers, 16 attention heads, 1,024 hidden dimensions, 512-token context).
@@ -37,7 +43,7 @@ This ZIP is a deployment snapshot, not a complete training repository: the earli
 
 The original demo runs on a CPU laptop with Windows Task Scheduler, and is proxied over HTTPS using Tailscale Funnel. A permanently available demo requires that laptop to remain powered on, connected and awake.
 
-**Do not expose this snapshot to the public internet without adding access control first.** The present API has no login: users of a public Funnel endpoint can send requests and read or clear shared chat history. The public demo URL is deliberately not listed here until that is fixed. For private use, prefer access restricted to your own tailnet rather than a public Funnel.
+**Security limitation:** This public demo has no login: visitors can send requests and read or clear shared chat history. Do not enter sensitive data. Add access control and separate each user's history before relying on it as a public service. For private use, prefer access restricted to your own tailnet rather than a public Funnel.
 
 ## Benchmark caveat
 
